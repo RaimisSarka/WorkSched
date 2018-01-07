@@ -1,0 +1,45 @@
+<resources>
+    <string name="app_name">WorkSched</string>
+
+    <!--Recycler view layout-->
+    <string name="date">1970/01/01 Monday</string>
+    <string name="column_name_date">Date</string>
+    <string name="column_name_shift_no">Shift No</string>
+    <string name="column_name_name_lastname">Name Lastname</string>
+
+    <!--Menu-->
+    <string name="settings">Settings</string>
+
+    <!--Settings layout-->
+    <string name="edit_shifts_option">Edit Shifts</string>
+    <string name="edit_workers_option">Edit Workers</string>
+    <string name="edit_employments_option">Edit Employments</string>
+
+    <!--Edit Shifts Activity-->
+    <string name="column_name_shifts_no">Shift No</string>
+    <string name="column_name_shift_name">Shift Name</string>
+
+    <!--Add Shift Activity-->
+    <string name="shift_name_text_label">Shift Name</string>
+    <string name="shift_number_text_label">Shift Number</string>
+    <string name="shift_type_selector_label">Shift Type</string>
+    <string name="shift_type_selector_value">2+2</string>
+    <string name="shift_start_date_selector_label">Start Date</string>
+    <string name="shift_start_date_selector_value">1970/01/02</string>
+    <string name="shift_add_button_label">Add</string>
+
+    <!--Edit Workers Activity-->
+    <string name="filter_text_label">Filter</string>
+    <string name="column_name_worker_name">Worker name</string>
+
+    <!--Edit Employments Activity-->
+    <string name="column_show">Show</string>
+    <string name="column_name_employment_name">Employment Name</string>
+
+    <!--Activities labels-->
+    <string name="setting_activity_label">Settings</string>
+    <string name="edit_shifts_activity_label">Shifts</string>
+    <string name="add_shift_activity_label">Add Shift</string>
+    <string name="edit_workers_activity_label">Workers</string>
+    <string name="edit_employments_activity_label">Employments</string>
+</resources>

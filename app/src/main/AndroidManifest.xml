@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    package="com.raimissarka.worksched">
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/MyAppTheme">
+        <activity android:name=".MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".SettingsActivity"
+            android:label="@string/setting_activity_label"
+            android:parentActivityName=".MainActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MainActivity" />
+        </activity>
+        <activity
+            android:name=".EditShiftsActivity"
+            android:label="@string/edit_shifts_activity_label"
+            android:parentActivityName=".SettingsActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".SettingsActivity" />
+        </activity>
+        <activity
+            android:name=".EditWorkersActivity"
+            android:label="@string/edit_workers_activity_label"
+            android:parentActivityName=".SettingsActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".SettingsActivity" />
+        </activity>
+        <activity
+            android:name=".EditEmploymentsActivity"
+            android:label="@string/edit_employments_activity_label"
+            android:parentActivityName=".SettingsActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".SettingsActivity" />
+        </activity>
+        <activity
+            android:name=".AddShiftActivity"
+            android:label="@string/add_shift_activity_label"
+            android:parentActivityName=".EditShiftsActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".EditShiftsActivity" />
+        </activity>
+    </application>
+
+</manifest>
