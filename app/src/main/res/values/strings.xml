@@ -31,10 +31,24 @@
     <!--Edit Workers Activity-->
     <string name="filter_text_label">Filter</string>
     <string name="column_name_worker_name">Worker name</string>
+    
+    <!--Add worker Activity-->
+    <string name="worker_name_text_label">Name</string>
+    <string name="worker_name_text_value">Name Lastname</string>
+    <string name="worker_shift_dependency_selector_label">Shift</string>
+    <string name="worker_shift_dependency_selector_value">FirstClass</string>
+    <string name="worker_phone_number_text_label">Phone number</string>
+    <string name="worker_phone_number_text_value">1234567899</string>
+    <string name="worker_add_button_label">Add</string>
 
     <!--Edit Employments Activity-->
     <string name="column_show">Show</string>
     <string name="column_name_employment_name">Employment Name</string>
+
+    <!--Add employment Activity-->
+    <string name="employment_name_text_label">Employment Name</string>
+    <string name="employment_name_text_value">Name Lastname</string>
+    <string name="employment_add_button_label">Add</string>
 
     <!--Activities labels-->
     <string name="setting_activity_label">Settings</string>
@@ -42,4 +56,6 @@
     <string name="add_shift_activity_label">Add Shift</string>
     <string name="edit_workers_activity_label">Workers</string>
     <string name="edit_employments_activity_label">Employments</string>
+    <string name="add_employment_activity_label">Add Employment</string>
+    <string name="add_worker_activity_label">Add Worker</string>
 </resources>

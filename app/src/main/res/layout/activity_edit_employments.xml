@@ -21,19 +21,19 @@
         app:layout_constraintLeft_toLeftOf="@+id/tv_show_column_label" />
 
     <android.support.design.widget.FloatingActionButton
-        android:id="@+id/floatingActionButton3"
+        android:id="@+id/fab_add_employment"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|end"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
         android:clickable="true"
-        app:fabSize="mini"
-        app:srcCompat="@android:drawable/ic_menu_add"
+        app:fabSize="normal"
         app:layout_anchor="@id/rv_edit_employments"
         app:layout_anchorGravity="bottom|right|end"
-        android:layout_marginEnd="8dp"
-        app:layout_constraintRight_toRightOf="@+id/rv_edit_employments"
         app:layout_constraintBottom_toBottomOf="@+id/rv_edit_employments"
-        android:layout_marginBottom="8dp" />
+        app:layout_constraintRight_toRightOf="@+id/rv_edit_employments"
+        app:srcCompat="@android:drawable/ic_menu_add" />
 
     <TextView
         android:id="@+id/tv_show_column_label"

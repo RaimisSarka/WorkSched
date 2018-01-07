@@ -1,9 +1,12 @@
 package com.raimissarka.worksched;
 
+import android.content.Intent;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.view.View;
 
 public class EditEmploymentsActivity extends AppCompatActivity {
 
@@ -21,5 +24,15 @@ public class EditEmploymentsActivity extends AppCompatActivity {
 
         // Enable the Up button
         ab.setDisplayHomeAsUpEnabled(true);
+
+        FloatingActionButton mAddEmploymentButton = (FloatingActionButton) findViewById(R.id.fab_add_employment);
+
+        mAddEmploymentButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(EditEmploymentsActivity.this, AddEmploymentActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 }

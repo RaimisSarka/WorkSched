@@ -57,6 +57,21 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".EditShiftsActivity" />
         </activity>
+        <activity
+            android:name=".AddEmploymentActivity"
+            android:label="@string/add_employment_activity_label"
+            android:parentActivityName=".EditEmploymentsActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".EditEmploymentsActivity" />
+        </activity>
+        <activity android:name=".AddWorkerActivity"
+            android:label="@string/add_worker_activity_label"
+            android:parentActivityName=".EditWorkersActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".EditWorkersActivity" />
+        </activity>
     </application>
 
 </manifest>
