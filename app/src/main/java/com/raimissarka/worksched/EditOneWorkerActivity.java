@@ -14,20 +14,18 @@ import android.widget.Toast;
 import com.raimissarka.worksched.data.WorkersContract;
 import com.raimissarka.worksched.data.WorkersDbHelper;
 
-public class AddWorkerActivity extends AppCompatActivity {
+public class EditOneWorkerActivity extends AppCompatActivity {
 
-    private WorkersAdapter mAdapter;
+    private WorkersDbHelper dbHelper;
     private SQLiteDatabase mDb;
     private EditText mWorkerName;
     private EditText mWorkersPhoneNumber;
-    private final static String LOG_TAG = MainActivity.class.getSimpleName();
-    private WorkersDbHelper dbHelper;
+    private long workersID = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_add_worker);
-
+        setContentView(R.layout.activity_edit_one_worker);
 
         Toolbar myToolbar = (Toolbar) findViewById(R.id.my_toolbar);
         setSupportActionBar(myToolbar);
@@ -38,23 +36,40 @@ public class AddWorkerActivity extends AppCompatActivity {
         // Enable the Up button
         ab.setDisplayHomeAsUpEnabled(true);
 
+        //get name
+        String s = getIntent().getStringExtra("WORKER_NAME");
+        mWorkerName = (EditText) findViewById(R.id.et_edit_worker_name_text);
+        mWorkerName.setText(s);
+
+        //TODO get dependency
+
+        //get phone
+        String phoneNumber = getIntent().getStringExtra("WORKER_PHONE");
+        mWorkersPhoneNumber = (EditText) findViewById(R.id.et_edit_worker_phone_number);
+        mWorkersPhoneNumber.setText(phoneNumber);
+
+        //get id
+
+        String stringWorkersID = getIntent().getStringExtra("WORKERS_ID");
+        workersID = Long.parseLong(stringWorkersID);
         // Create a DB helper (this will create the DB if run for the first time)
         dbHelper = new WorkersDbHelper(this);
 
+        //Save button
+        FrameLayout mSaveWorkerButton = (FrameLayout) findViewById(R.id.fl_edit_worker_save_button);
 
-        FrameLayout mAddWorkerButton = (FrameLayout) findViewById(R.id.fl_worker_add_button);
-
-        mAddWorkerButton.setOnClickListener(new View.OnClickListener() {
+        mSaveWorkerButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 Boolean mSuccesfullAdd = false;
                 mDb = dbHelper.getWritableDatabase();
                 mDb.beginTransaction();
                 try {
-                    mSuccesfullAdd = addToWorkersDb();
+                    mSuccesfullAdd = saveWorkerToDb(workersID);
                     if (mSuccesfullAdd) {
                         mDb.setTransactionSuccessful();
-                        Toast.makeText(AddWorkerActivity.this, R.string.toast_succesfull_add,
+                        Toast.makeText(EditOneWorkerActivity.this, R.string.toast_succesfull_save,
                                 Toast.LENGTH_LONG).show();
                     }
                 }finally {
@@ -66,50 +81,34 @@ public class AddWorkerActivity extends AppCompatActivity {
                 }
             }
         });
-
-        mWorkerName = (EditText) findViewById(R.id.et_worker_name_text);
-        mWorkersPhoneNumber = (EditText) findViewById(R.id.et_worker_phone_number);
-
     }
 
-    public Boolean addToWorkersDb() {
-
+    private Boolean saveWorkerToDb(long id) {
         if (mWorkerName.getText().length() == 0) {
             //checking if the name field is not empty
-            Toast.makeText(AddWorkerActivity.this, R.string.toast_empty_name_field,
+            Toast.makeText(EditOneWorkerActivity.this, R.string.toast_empty_name_field,
                     Toast.LENGTH_LONG).show();
             return false;
         }
-        if (mWorkersPhoneNumber.getText().length() == 0) {
-            Toast.makeText(AddWorkerActivity.this, R.string.toast_empty_phone_field,
+        if(mWorkersPhoneNumber.getText().length() == 0) {
+            Toast.makeText(EditOneWorkerActivity.this, R.string.toast_empty_phone_field,
                     Toast.LENGTH_LONG).show();
             return false;
         }
-        if (mWorkerName.getText().length() != 0 &&
+        if(mWorkerName.getText().length() != 0 &&
                 mWorkersPhoneNumber.getText().length() != 0) {
-            addNewWorker(mWorkerName.getText().toString(), mWorkersPhoneNumber.getText().toString());
+            updateWorker(id, mWorkerName.getText().toString(), mWorkersPhoneNumber.getText().toString());
             return true;
         } else {
             return false;
         }
-
     }
 
-    public long addNewWorker (String name, String phone) {
+    public long updateWorker(long id, String name, String phone) {
         ContentValues cv = new ContentValues();
         cv.put(WorkersContract.WorkersEntry.COLUMN_WORKER_NAME, name);
         cv.put(WorkersContract.WorkersEntry.COLUMN_SHIFT_DEPENDENCY, 1);
         cv.put(WorkersContract.WorkersEntry.COLUMN_PHONE_NUMBER, phone);
-        return mDb.insert(WorkersContract.WorkersEntry.TABLE_NAME, null, cv);
-    }
-
-    @Override
-    protected void onPause() {
-        super.onPause();
-    }
-
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
+        return mDb.update(WorkersContract.WorkersEntry.TABLE_NAME, cv,  "_id="+id, null);
     }
 }

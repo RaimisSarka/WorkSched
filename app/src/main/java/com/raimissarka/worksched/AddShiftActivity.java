@@ -32,8 +32,6 @@ public class AddShiftActivity extends AppCompatActivity {
         // Enable the Up button
         ab.setDisplayHomeAsUpEnabled(true);
 
-        EditText mShiftStartDate = (EditText) findViewById(R.id.et_shift_start_date_selector_value);
-
         ImageView mSetDateButton = (ImageView) findViewById(R.id.iw_date_pick_button);
 
         mSetDateButton.setOnClickListener(new View.OnClickListener() {
@@ -61,8 +59,12 @@ public class AddShiftActivity extends AppCompatActivity {
         }
 
         public void onDateSet(DatePicker view, int year, int month, int day) {
-            // Do something with the date chosen by the user
-            
+            EditText mShiftStartDate = getActivity().findViewById(R.id.et_shift_start_date_selector_value);
+
+            mShiftStartDate.setText(
+                    String.valueOf(year) + '/' +
+                    String.valueOf(month + 1) + '/' +
+                            String.valueOf(day));
         }
 
     }

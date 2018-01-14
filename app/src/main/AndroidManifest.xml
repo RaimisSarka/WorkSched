@@ -65,8 +65,16 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".EditEmploymentsActivity" />
         </activity>
-        <activity android:name=".AddWorkerActivity"
+        <activity
+            android:name=".AddWorkerActivity"
             android:label="@string/add_worker_activity_label"
+            android:parentActivityName=".EditWorkersActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".EditWorkersActivity" />
+        </activity>
+        <activity android:name=".EditOneWorkerActivity"
+            android:label="@string/edit_one_worker_activity_label"
             android:parentActivityName=".EditWorkersActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"

@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/layout_borders"
+    android:layout_marginTop="5dp"
     xmlns:tools="http://schemas.android.com/tools">
 
     <TextView
@@ -11,6 +13,6 @@
         android:layout_margin="5dp"
         android:padding="5dp"
         android:textSize="20sp"
-        tools:text="NameLastName"/>
+        android:text="NameLastName"/>
 
-</FrameLayout>
+</LinearLayout>

@@ -31,7 +31,7 @@
     <!--Edit Workers Activity-->
     <string name="filter_text_label">Filter</string>
     <string name="column_name_worker_name">Worker name</string>
-    
+
     <!--Add worker Activity-->
     <string name="worker_name_text_label">Name</string>
     <string name="worker_name_text_value">Name Lastname</string>
@@ -40,6 +40,15 @@
     <string name="worker_phone_number_text_label">Phone number</string>
     <string name="worker_phone_number_text_value">1234567899</string>
     <string name="worker_add_button_label">Add</string>
+
+    <!--Edit worker Activity-->
+    <string name="edit_worker_name_text_label">Name</string>
+    <string name="edit_worker_name_text_value">Name Lastname</string>
+    <string name="edit_worker_shift_dependency_selector_label">Shift</string>
+    <string name="edit_worker_shift_dependency_selector_value">FirstClass</string>
+    <string name="edit_worker_phone_number_text_label">Phone number</string>
+    <string name="edit_worker_phone_number_text_value">1234567899</string>
+    <string name="edit_worker_save_button_label">Save</string>
 
     <!--Edit Employments Activity-->
     <string name="column_show">Show</string>
@@ -58,4 +67,18 @@
     <string name="edit_employments_activity_label">Employments</string>
     <string name="add_employment_activity_label">Add Employment</string>
     <string name="add_worker_activity_label">Add Worker</string>
+    <string name="edit_one_worker_activity_label">Edit Worker</string>
+
+    <!--Toasts-->
+    <string name="toast_succesfull_add">Add was completed succesfully!</string>
+    <string name="toast_succesfull_save">Saved succesfully!</string>
+    <string name="toast_empty_name_field">Please fill name field.</string>
+    <string name="toast_empty_phone_field">Please fill phone field.</string>
+    <string name="toast_failed">Something went wrong...</string>
+
+    <!--Alert dialogs-->
+    <string name="dialog_delete_item_title">Attention!</string>
+    <string name="dialog_delete_item_text">Do you want to delete it?</string>
+    <string name="dialog_positive_button_label">Yes</string>
+    <string name="dialog_negative_button_label">Cancel</string>
 </resources>
