@@ -49,7 +49,6 @@ public class EditOneWorkerActivity extends AppCompatActivity {
         mWorkersPhoneNumber.setText(phoneNumber);
 
         //get id
-
         String stringWorkersID = getIntent().getStringExtra("WORKERS_ID");
         workersID = Long.parseLong(stringWorkersID);
         // Create a DB helper (this will create the DB if run for the first time)
@@ -103,6 +102,8 @@ public class EditOneWorkerActivity extends AppCompatActivity {
             return false;
         }
     }
+
+
 
     public long updateWorker(long id, String name, String phone) {
         ContentValues cv = new ContentValues();

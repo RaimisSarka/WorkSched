@@ -16,18 +16,17 @@ import com.raimissarka.worksched.data.WorkersDbHelper;
 
 public class AddWorkerActivity extends AppCompatActivity {
 
-    private WorkersAdapter mAdapter;
     private SQLiteDatabase mDb;
     private EditText mWorkerName;
     private EditText mWorkersPhoneNumber;
-    private final static String LOG_TAG = MainActivity.class.getSimpleName();
     private WorkersDbHelper dbHelper;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_worker);
-
 
         Toolbar myToolbar = (Toolbar) findViewById(R.id.my_toolbar);
         setSupportActionBar(myToolbar);
@@ -41,8 +40,9 @@ public class AddWorkerActivity extends AppCompatActivity {
         // Create a DB helper (this will create the DB if run for the first time)
         dbHelper = new WorkersDbHelper(this);
 
-
         FrameLayout mAddWorkerButton = (FrameLayout) findViewById(R.id.fl_worker_add_button);
+
+
 
         mAddWorkerButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -50,6 +50,8 @@ public class AddWorkerActivity extends AppCompatActivity {
                 Boolean mSuccesfullAdd = false;
                 mDb = dbHelper.getWritableDatabase();
                 mDb.beginTransaction();
+
+
                 try {
                     mSuccesfullAdd = addToWorkersDb();
                     if (mSuccesfullAdd) {
@@ -60,6 +62,8 @@ public class AddWorkerActivity extends AppCompatActivity {
                 }finally {
                     mDb.endTransaction();
                 }
+
+
                 if (mSuccesfullAdd) {
                     mDb.close();
                     finish();
@@ -67,12 +71,15 @@ public class AddWorkerActivity extends AppCompatActivity {
             }
         });
 
+
         mWorkerName = (EditText) findViewById(R.id.et_worker_name_text);
         mWorkersPhoneNumber = (EditText) findViewById(R.id.et_worker_phone_number);
-
     }
 
+
+
     public Boolean addToWorkersDb() {
+
 
         if (mWorkerName.getText().length() == 0) {
             //checking if the name field is not empty
@@ -80,11 +87,15 @@ public class AddWorkerActivity extends AppCompatActivity {
                     Toast.LENGTH_LONG).show();
             return false;
         }
+
+
         if (mWorkersPhoneNumber.getText().length() == 0) {
             Toast.makeText(AddWorkerActivity.this, R.string.toast_empty_phone_field,
                     Toast.LENGTH_LONG).show();
             return false;
         }
+
+
         if (mWorkerName.getText().length() != 0 &&
                 mWorkersPhoneNumber.getText().length() != 0) {
             addNewWorker(mWorkerName.getText().toString(), mWorkersPhoneNumber.getText().toString());
@@ -92,8 +103,9 @@ public class AddWorkerActivity extends AppCompatActivity {
         } else {
             return false;
         }
-
     }
+
+
 
     public long addNewWorker (String name, String phone) {
         ContentValues cv = new ContentValues();
@@ -103,10 +115,14 @@ public class AddWorkerActivity extends AppCompatActivity {
         return mDb.insert(WorkersContract.WorkersEntry.TABLE_NAME, null, cv);
     }
 
+
+
     @Override
     protected void onPause() {
         super.onPause();
     }
+
+
 
     @Override
     protected void onDestroy() {

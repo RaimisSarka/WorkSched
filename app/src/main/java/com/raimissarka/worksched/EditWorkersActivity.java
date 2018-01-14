@@ -90,6 +90,13 @@ public class EditWorkersActivity extends AppCompatActivity{
 
 
 
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+    }
+
+
+
     /**
      * Query the mDb and get all workers from the workers table
      *
@@ -105,14 +112,6 @@ public class EditWorkersActivity extends AppCompatActivity{
                 null,
                 WorkersContract.WorkersEntry._ID
         );
-    }
-
-
-
-    @Override
-    protected void onDestroy() {
-        //mDb.close();
-        super.onDestroy();
     }
 
 

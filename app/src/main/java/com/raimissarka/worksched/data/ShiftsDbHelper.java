@@ -12,7 +12,7 @@ import com.raimissarka.worksched.data.ShiftsContract.*;
 public class ShiftsDbHelper extends SQLiteOpenHelper {
 
     // The database name
-    private static final String DATABASE_NAME = "workers.db";
+    private static final String DATABASE_NAME = "shifts.db";
 
     // If you change the database schema, you must increment the database version
     private static final int DATABASE_VERSION = 1;
@@ -33,7 +33,7 @@ public class ShiftsDbHelper extends SQLiteOpenHelper {
                 ShiftsEntry.COLUMN_SHIFT_NAME + " TEXT NOT NULL, " +
                 ShiftsEntry.COLUMN_SHIFT_NUMBER + " INTEGER NOT NULL, " +
                 ShiftsEntry.COLUMN_SHIFT_TYPE + " INTEGER NOT NULL, " +
-                ShiftsEntry.COLUMN_SHIFT_START_DATE + " DATE" +
+                ShiftsEntry.COLUMN_SHIFT_START_DATE + " TEXT" +
                 "); ";
 
         db.execSQL(SQL_CREATE_SHIFT_TABLE);

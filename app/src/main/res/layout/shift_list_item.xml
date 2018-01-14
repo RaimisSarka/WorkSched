@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/layout_borders"
+    android:layout_marginTop="5dp"
+    android:padding="5dp"
+    android:orientation="horizontal">
+
+    <RadioButton
+        android:id="@+id/rb_shift_show"
+        android:layout_margin="5dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="" />
+
+    <TextView
+        android:id="@+id/tv_shift_number_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:layout_weight="0.1"
+        android:paddingEnd="5dp"
+        android:paddingStart="5dp"
+        android:text="1"
+        android:textAlignment="center"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/tv_shift_item_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="0.7"
+        android:layout_margin="5dp"
+        android:text="@string/shift_name_text_label"
+        android:textAlignment="viewStart"
+        android:textSize="18sp" />
+</LinearLayout>

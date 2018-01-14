@@ -19,7 +19,7 @@
     <string name="column_name_shifts_no">Shift No</string>
     <string name="column_name_shift_name">Shift Name</string>
 
-    <!--Add Shift Activity-->
+    <!--Add Shifts Activity-->
     <string name="shift_name_text_label">Shift Name</string>
     <string name="shift_number_text_label">Shift Number</string>
     <string name="shift_type_selector_label">Shift Type</string>
@@ -27,6 +27,15 @@
     <string name="shift_start_date_selector_label">Start Date</string>
     <string name="shift_start_date_selector_value">1970/01/02</string>
     <string name="shift_add_button_label">Add</string>
+
+    <!--Edit Shift Activity-->
+    <string name="edit_shift_name_text_label">Shift Name</string>
+    <string name="edit_shift_number_text_label">Shift Number</string>
+    <string name="edit_shift_type_selector_label">Shift Type</string>
+    <string name="edit_shift_type_selector_value">2+2</string>
+    <string name="edit_shift_start_date_selector_label">Start Date</string>
+    <string name="edit_shift_start_date_selector_value">1970/01/02</string>
+    <string name="edit_shift_save_button_label">Save</string>
 
     <!--Edit Workers Activity-->
     <string name="filter_text_label">Filter</string>
@@ -68,17 +77,23 @@
     <string name="add_employment_activity_label">Add Employment</string>
     <string name="add_worker_activity_label">Add Worker</string>
     <string name="edit_one_worker_activity_label">Edit Worker</string>
+    <string name="edit_one_shift_activity_label">Edit Shift</string>
 
     <!--Toasts-->
     <string name="toast_succesfull_add">Add was completed succesfully!</string>
     <string name="toast_succesfull_save">Saved succesfully!</string>
     <string name="toast_empty_name_field">Please fill name field.</string>
     <string name="toast_empty_phone_field">Please fill phone field.</string>
+    <string name="toast_empty_date_field">Please pick start date.</string>
     <string name="toast_failed">Something went wrong...</string>
+    <string name="toast_no_type">Pick shift type.</string>
 
     <!--Alert dialogs-->
     <string name="dialog_delete_item_title">Attention!</string>
     <string name="dialog_delete_item_text">Do you want to delete it?</string>
     <string name="dialog_positive_button_label">Yes</string>
     <string name="dialog_negative_button_label">Cancel</string>
+    <string name="dialog_pick_type_message">Select shift type.</string>
+    <string name="dialog_shift_type_2plus2">2+2</string>
+    <string name="dialog_shift_type_day_shift">Day shift</string>
 </resources>

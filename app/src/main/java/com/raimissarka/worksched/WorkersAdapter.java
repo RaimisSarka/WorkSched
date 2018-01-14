@@ -22,6 +22,8 @@ public class WorkersAdapter extends RecyclerView.Adapter<WorkersAdapter.WorkersV
     private Cursor mCursor;
     private Context mContext;
 
+
+
     /**
      * Constructor using the context and the db cursor
      *
@@ -32,6 +34,8 @@ public class WorkersAdapter extends RecyclerView.Adapter<WorkersAdapter.WorkersV
         this.mCursor = cursor;
     }
 
+
+
     @Override
     public WorkersViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         // Get the RecyclerView item layout
@@ -39,6 +43,8 @@ public class WorkersAdapter extends RecyclerView.Adapter<WorkersAdapter.WorkersV
         View view = inflater.inflate(R.layout.worker_list_item, parent, false);
         return new WorkersViewHolder(view);
     }
+
+
 
     @Override
     public void onBindViewHolder(WorkersAdapter.WorkersViewHolder holder, final int position) {
@@ -52,6 +58,9 @@ public class WorkersAdapter extends RecyclerView.Adapter<WorkersAdapter.WorkersV
         final int dependency = mCursor.getInt(mCursor.getColumnIndex(WorkersContract.WorkersEntry.COLUMN_PHONE_NUMBER));
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {
+
+
+
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(mContext, EditOneWorkerActivity.class);
@@ -61,17 +70,25 @@ public class WorkersAdapter extends RecyclerView.Adapter<WorkersAdapter.WorkersV
                 intent.putExtra("WORKERS_ID", id+"");
                 mContext.startActivity(intent);
             }
+
+
         });
+
+
+
         // Display the worker name
         holder.nameTextView.setText(name);
         holder.itemView.setTag(id);
     }
 
 
+
     @Override
     public int getItemCount() {
         return mCursor.getCount();
     }
+
+
 
     /**
      * Inner class to hold the views needed to display a single item in the recycler-view
@@ -80,6 +97,8 @@ public class WorkersAdapter extends RecyclerView.Adapter<WorkersAdapter.WorkersV
 
         // Will display the Workers name
         TextView nameTextView;
+
+
 
         /**
          * Constructor for our ViewHolder. Within this constructor, we get a reference to our
@@ -92,6 +111,7 @@ public class WorkersAdapter extends RecyclerView.Adapter<WorkersAdapter.WorkersV
             super(itemView);
             nameTextView = (TextView) itemView.findViewById(R.id.text_view_name);
         }
+
 
     }
 }
