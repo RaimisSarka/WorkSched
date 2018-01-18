@@ -20,6 +20,21 @@
         app:layout_constraintVertical_bias="0.0"
         app:layout_constraintLeft_toLeftOf="@+id/tv_show_column_label" />
 
+    <ProgressBar
+        android:id="@+id/pb_employment_loading_indicator"
+        android:layout_height="42dp"
+        android:layout_width="42dp"
+        android:layout_gravity="center"
+        android:visibility="invisible"
+        android:layout_marginLeft="8dp"
+        app:layout_constraintLeft_toLeftOf="@+id/rv_edit_employments"
+        android:layout_marginRight="8dp"
+        app:layout_constraintRight_toRightOf="@+id/rv_edit_employments"
+        app:layout_constraintTop_toTopOf="@+id/rv_edit_employments"
+        android:layout_marginTop="8dp"
+        app:layout_constraintBottom_toBottomOf="@+id/rv_edit_employments"
+        android:layout_marginBottom="8dp" />
+
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/fab_add_employment"
         android:layout_width="wrap_content"

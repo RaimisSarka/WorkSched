@@ -81,12 +81,21 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".EditWorkersActivity" />
         </activity>
-        <activity android:name=".EditOneShiftActivity"
+        <activity
+            android:name=".EditOneShiftActivity"
             android:label="@string/edit_one_shift_activity_label"
             android:parentActivityName=".EditShiftsActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".EditShiftsActivity" />
+        </activity>
+        <activity
+            android:name=".EditOneEmploymentActivity"
+            android:label="@string/edit_one_employment_activity_label"
+            android:parentActivityName=".EditEmploymentsActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".EditEmploymentsActivity" />
         </activity>
     </application>
 

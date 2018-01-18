@@ -14,7 +14,7 @@ public class WorkersDbHelper extends SQLiteOpenHelper {
     private static final String DATABASE_NAME = "workers.db";
 
     // If you change the database schema, you must increment the database version
-    private static final int DATABASE_VERSION = 1;
+    private static final int DATABASE_VERSION = 2;
 
 
 
@@ -31,7 +31,9 @@ public class WorkersDbHelper extends SQLiteOpenHelper {
         final String SQL_CREATE_WORKERS_TABLE = "CREATE TABLE " + WorkersEntry.TABLE_NAME + " (" +
                 WorkersEntry._ID + " INTEGER PRIMARY KEY AUTOINCREMENT," +
                 WorkersEntry.COLUMN_WORKER_NAME + " TEXT NOT NULL, " +
+                WorkersEntry.COLUMN_WORKER_POSITION + " TEXT NOT NULL, " +
                 WorkersEntry.COLUMN_SHIFT_DEPENDENCY + " INTEGER NOT NULL, " +
+                WorkersEntry.COLUMN_EMPLOYMENT_DEPENDENCY + " INTEGER NOT NULL, " +
                 WorkersEntry.COLUMN_PHONE_NUMBER + " TEXT" +
                 "); ";
 

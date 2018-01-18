@@ -171,7 +171,7 @@ public class AddShiftActivity extends AppCompatActivity {
         ContentValues cv = new ContentValues();
         cv.put(ShiftsContract.ShiftsEntry.COLUMN_SHIFT_NAME, name);
         cv.put(ShiftsContract.ShiftsEntry.COLUMN_SHIFT_NUMBER, number);
-        cv.put(ShiftsContract.ShiftsEntry.COLUMN_SHIFT_TYPE, mShiftType);
+        cv.put(ShiftsContract.ShiftsEntry.COLUMN_SHIFT_TYPE, shiftType);
         cv.put(ShiftsContract.ShiftsEntry.COLUMN_SHIFT_START_DATE, date);
         return mDb.insert(ShiftsContract.ShiftsEntry.TABLE_NAME, null, cv);
     }

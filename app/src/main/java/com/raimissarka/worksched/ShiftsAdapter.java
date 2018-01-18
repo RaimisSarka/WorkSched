@@ -92,7 +92,6 @@ public class ShiftsAdapter extends RecyclerView.Adapter<ShiftsAdapter.ShiftsView
 
     public class ShiftsViewHolder extends RecyclerView.ViewHolder {
 
-        RadioButton mShowShiftButton;
         TextView mShiftNumberTextView;
         TextView mShiftNameTextView;
 
@@ -100,7 +99,6 @@ public class ShiftsAdapter extends RecyclerView.Adapter<ShiftsAdapter.ShiftsView
         public ShiftsViewHolder(View itemView) {
             super(itemView);
 
-            mShowShiftButton = (RadioButton) itemView.findViewById(R.id.rb_shift_show);
             mShiftNumberTextView = (TextView) itemView.findViewById(R.id.tv_shift_number_text);
             mShiftNameTextView = (TextView) itemView.findViewById(R.id.tv_shift_item_name);
         }

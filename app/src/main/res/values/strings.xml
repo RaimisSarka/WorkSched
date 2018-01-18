@@ -13,7 +13,7 @@
     <!--Settings layout-->
     <string name="edit_shifts_option">Edit Shifts</string>
     <string name="edit_workers_option">Edit Workers</string>
-    <string name="edit_employments_option">Edit Employments</string>
+    <string name="edit_employments_option">Edit Department</string>
 
     <!--Edit Shifts Activity-->
     <string name="column_name_shifts_no">Shift No</string>
@@ -44,8 +44,12 @@
     <!--Add worker Activity-->
     <string name="worker_name_text_label">Name</string>
     <string name="worker_name_text_value">Name Lastname</string>
+    <string name="worker_position_text_label">Position</string>
+    <string name="worker_position_text_value">Leader of metrology department</string>
     <string name="worker_shift_dependency_selector_label">Shift</string>
     <string name="worker_shift_dependency_selector_value">FirstClass</string>
+    <string name="worker_employment_dependency_selector_label">Department</string>
+    <string name="worker_employment_dependency_selector_value">1</string>
     <string name="worker_phone_number_text_label">Phone number</string>
     <string name="worker_phone_number_text_value">1234567899</string>
     <string name="worker_add_button_label">Add</string>
@@ -53,31 +57,42 @@
     <!--Edit worker Activity-->
     <string name="edit_worker_name_text_label">Name</string>
     <string name="edit_worker_name_text_value">Name Lastname</string>
+    <string name="edit_worker_position_text_label">Position</string>
+    <string name="edit_worker_position_text_value">Leader of metrology department</string>
     <string name="edit_worker_shift_dependency_selector_label">Shift</string>
     <string name="edit_worker_shift_dependency_selector_value">FirstClass</string>
+    <string name="edit_worker_employment_dependency_selector_label">Department</string>
+    <string name="edit_worker_employment_dependency_selector_value">1</string>
     <string name="edit_worker_phone_number_text_label">Phone number</string>
     <string name="edit_worker_phone_number_text_value">1234567899</string>
     <string name="edit_worker_save_button_label">Save</string>
 
     <!--Edit Employments Activity-->
     <string name="column_show">Show</string>
-    <string name="column_name_employment_name">Employment Name</string>
+    <string name="column_name_employment_name">Department Name</string>
+    <string name="employment_list_item_text">Department Name</string>
 
     <!--Add employment Activity-->
-    <string name="employment_name_text_label">Employment Name</string>
-    <string name="employment_name_text_value">Name Lastname</string>
+    <string name="employment_name_text_label">Department Name</string>
+    <string name="employment_name_text_value">Name</string>
     <string name="employment_add_button_label">Add</string>
+
+    <!--Edit employment Activity-->
+    <string name="employment_edit_name_text_label">Department Name</string>
+    <string name="employment_edit_name_text_value">Name</string>
+    <string name="employment_edit_save_button_label">Save</string>
 
     <!--Activities labels-->
     <string name="setting_activity_label">Settings</string>
     <string name="edit_shifts_activity_label">Shifts</string>
     <string name="add_shift_activity_label">Add Shift</string>
     <string name="edit_workers_activity_label">Workers</string>
-    <string name="edit_employments_activity_label">Employments</string>
-    <string name="add_employment_activity_label">Add Employment</string>
+    <string name="edit_employments_activity_label">Departments</string>
+    <string name="add_employment_activity_label">Add Department</string>
     <string name="add_worker_activity_label">Add Worker</string>
     <string name="edit_one_worker_activity_label">Edit Worker</string>
     <string name="edit_one_shift_activity_label">Edit Shift</string>
+    <string name="edit_one_employment_activity_label">Edit Department</string>
 
     <!--Toasts-->
     <string name="toast_succesfull_add">Add was completed succesfully!</string>
@@ -87,6 +102,7 @@
     <string name="toast_empty_date_field">Please pick start date.</string>
     <string name="toast_failed">Something went wrong...</string>
     <string name="toast_no_type">Pick shift type.</string>
+    <string name="toast_no_position">Please fill position field.</string>
 
     <!--Alert dialogs-->
     <string name="dialog_delete_item_title">Attention!</string>
@@ -96,4 +112,6 @@
     <string name="dialog_pick_type_message">Select shift type.</string>
     <string name="dialog_shift_type_2plus2">2+2</string>
     <string name="dialog_shift_type_day_shift">Day shift</string>
+    <string name="dialog_pick_shift_name_message">Select shift name.</string>
+    <string name="dialog_pick_employment_name_message">Select department.</string>
 </resources>

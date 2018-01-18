@@ -52,10 +52,13 @@ public class WorkersAdapter extends RecyclerView.Adapter<WorkersAdapter.WorkersV
         if (!mCursor.moveToPosition(position))
             return; // bail if returned null
 
-        final String name = mCursor.getString(mCursor.getColumnIndex(WorkersContract.WorkersEntry.COLUMN_WORKER_NAME));
         final long id = mCursor.getLong(mCursor.getColumnIndex(WorkersContract.WorkersEntry._ID));
+        final String name = mCursor.getString(mCursor.getColumnIndex(WorkersContract.WorkersEntry.COLUMN_WORKER_NAME));
+        final String workerPosition = mCursor.getString(mCursor.getColumnIndex(WorkersContract.WorkersEntry.COLUMN_WORKER_POSITION));
+        final int dependency = mCursor.getInt(mCursor.getColumnIndex(WorkersContract.WorkersEntry.COLUMN_SHIFT_DEPENDENCY));
+        final int employmentDependency = mCursor.getInt(mCursor.getColumnIndex(WorkersContract.WorkersEntry.COLUMN_EMPLOYMENT_DEPENDENCY));
         final String phone = mCursor.getString(mCursor.getColumnIndex(WorkersContract.WorkersEntry.COLUMN_PHONE_NUMBER));
-        final int dependency = mCursor.getInt(mCursor.getColumnIndex(WorkersContract.WorkersEntry.COLUMN_PHONE_NUMBER));
+
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {
 
@@ -65,7 +68,9 @@ public class WorkersAdapter extends RecyclerView.Adapter<WorkersAdapter.WorkersV
             public void onClick(View v) {
                 Intent intent = new Intent(mContext, EditOneWorkerActivity.class);
                 intent.putExtra("WORKER_NAME", name);
-                intent.putExtra("WORKER_SHIFT_DEPENDENCY", dependency);
+                intent.putExtra("WORKER_POSITION", workerPosition);
+                intent.putExtra("WORKER_SHIFT_DEPENDENCY", dependency+"");
+                intent.putExtra("WORKER_EMPLOYMENT_DEPENDENCY", employmentDependency+"");
                 intent.putExtra("WORKER_PHONE", phone);
                 intent.putExtra("WORKERS_ID", id+"");
                 mContext.startActivity(intent);
