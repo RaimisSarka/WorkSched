@@ -37,6 +37,7 @@ public class EditOneWorkerActivity extends AppCompatActivity {
     private static ArrayList<String> mShiftsNames = new ArrayList<String>();
     private static ArrayList<Integer> mShiftsNumbers = new ArrayList<Integer>();
     private static ArrayList<String> mEmploymentNames = new ArrayList<String>();
+    private static ArrayList<Integer> mEmployment_IDs = new ArrayList<Integer>();
     private ShiftsTable mTable;
     private EditText mWorkerName;
     private EditText mWorkersPosition;
@@ -97,6 +98,7 @@ public class EditOneWorkerActivity extends AppCompatActivity {
 
         loadShiftsData(this);
         loadEmploymentData(this);
+
 
         //Shift dependency selector
         FrameLayout mShiftNameSelectorButton = (FrameLayout) findViewById(R.id.fl_edit_worker_shift_dependency_selector);
@@ -294,11 +296,17 @@ public class EditOneWorkerActivity extends AppCompatActivity {
 
             mShiftsNames.clear();
             mShiftsNumbers.clear();
+            int mShiftNumberForCompare = Integer.valueOf(mWorkersShiftDependency.getText().toString());
 
             int i = 0;
             while (cursor.moveToPosition(i)){
                 mShiftsNames.add (cursor.getString(cursor.getColumnIndex(ShiftsContract.ShiftsEntry.COLUMN_SHIFT_NAME)));
                 mShiftsNumbers.add (cursor.getInt(cursor.getColumnIndex(ShiftsContract.ShiftsEntry.COLUMN_SHIFT_NUMBER)));
+
+                //Set text representation of Shift number
+                if (mShiftsNumbers.get(i) == mShiftNumberForCompare){
+                    mWorkersShiftDependency.setText(mShiftsNames.get(i));
+                }
                 i++;
             }
 
@@ -362,10 +370,17 @@ public class EditOneWorkerActivity extends AppCompatActivity {
             mExecuting = false;
 
             mEmploymentNames.clear();
+            int m_IdForcompare = Integer.valueOf(mWorkersEmploymentDependency.getText().toString());
 
             int i = 0;
             while (cursor.moveToPosition(i)){
                 mEmploymentNames.add (cursor.getString(cursor.getColumnIndex(EmploymentsContract.EmploymentsEntry.COLUMN_EMPLOYMENT_NAME)));
+                mEmployment_IDs.add (cursor.getInt(cursor.getColumnIndex((EmploymentsContract.EmploymentsEntry._ID))));
+
+                //Set text representation of Employment _ID
+                if (mEmployment_IDs.get(i) == m_IdForcompare) {
+                    mWorkersEmploymentDependency.setText(mEmploymentNames.get(i));
+                }
                 i++;
             }
 
@@ -417,6 +432,7 @@ public class EditOneWorkerActivity extends AppCompatActivity {
             AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
 
             mInnerStrings = mEmploymentNames.toArray(new String[0]);
+            mInnerInts = mEmployment_IDs.toArray(new Integer[0]);
 
             builder.setTitle(R.string.dialog_pick_employment_name_message)
                     .setItems(mInnerStrings, new DialogInterface.OnClickListener() {
@@ -424,7 +440,7 @@ public class EditOneWorkerActivity extends AppCompatActivity {
                         public void onClick(DialogInterface dialog, int which) {
                             TextView mEmploymentDependencyText = (TextView) getActivity().findViewById(R.id.tv_edit_worker_employment_dependency_selector_value);
                             mEmploymentDependencyText.setText(mInnerStrings[which]);
-                            mWorkersEmploymentDependencyInt = which;
+                            mWorkersEmploymentDependencyInt = mInnerInts[which];
                         }
                     });
             // Create the AlertDialog object and return it

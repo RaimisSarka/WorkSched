@@ -7,6 +7,37 @@
     tools:context="com.raimissarka.worksched.SettingsActivity">
 
     <FrameLayout
+        android:id="@+id/fl_show_employment_selector"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/layout_borders"
+        app:layout_constraintLeft_toLeftOf="@+id/fl_edit_employments"
+        app:layout_constraintTop_toBottomOf="@+id/fl_edit_employments"
+        app:layout_constraintRight_toRightOf="parent">
+
+        <TextView
+            android:id="@+id/tv_show_employment_text_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:padding="5dp"
+            android:text="@string/select_employment_to_show_label"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/tv_show_employment_text_value"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="30dp"
+            android:padding="5dp"
+            android:text="@string/select_employment_to_show_value" />
+    </FrameLayout>
+
+    <FrameLayout
         android:id="@+id/fl_edit_employments"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -30,6 +61,17 @@
             android:text="@string/edit_employments_option"
             android:textAlignment="viewStart"
             android:textSize="24sp" />
+
+        <ImageView
+            android:id="@+id/iv_edit_employment_options"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end"
+            android:layout_marginBottom="20dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginTop="20dp"
+
+            app:srcCompat="@drawable/vertical_dots" />
     </FrameLayout>
 
     <FrameLayout
@@ -57,6 +99,17 @@
             android:textAlignment="viewStart"
             android:textSize="24sp" />
 
+        <ImageView
+            android:id="@+id/iv_edit_workers_options"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_gravity="end"
+
+            app:srcCompat="@drawable/vertical_dots" />
+
     </FrameLayout>
 
     <FrameLayout
@@ -72,6 +125,17 @@
         app:layout_constraintTop_toBottomOf="@+id/my_toolbar"
         android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp">
+
+        <ImageView
+            android:id="@+id/iv_edit_shift_options"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_gravity="end"
+
+            app:srcCompat="@drawable/vertical_dots" />
 
         <TextView
             android:id="@+id/edit_shifts_tv"

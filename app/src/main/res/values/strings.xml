@@ -14,6 +14,8 @@
     <string name="edit_shifts_option">Edit Shifts</string>
     <string name="edit_workers_option">Edit Workers</string>
     <string name="edit_employments_option">Edit Department</string>
+    <string name="select_employment_to_show_label">Department to show</string>
+    <string name="select_employment_to_show_value">Pick department to show...</string>
 
     <!--Edit Shifts Activity-->
     <string name="column_name_shifts_no">Shift No</string>
@@ -45,11 +47,11 @@
     <string name="worker_name_text_label">Name</string>
     <string name="worker_name_text_value">Name Lastname</string>
     <string name="worker_position_text_label">Position</string>
-    <string name="worker_position_text_value">Leader of metrology department</string>
+    <string name="worker_position_text_value">Add workers position...</string>
     <string name="worker_shift_dependency_selector_label">Shift</string>
-    <string name="worker_shift_dependency_selector_value">FirstClass</string>
+    <string name="worker_shift_dependency_selector_value">Select shift</string>
     <string name="worker_employment_dependency_selector_label">Department</string>
-    <string name="worker_employment_dependency_selector_value">1</string>
+    <string name="worker_employment_dependency_selector_value">Select department</string>
     <string name="worker_phone_number_text_label">Phone number</string>
     <string name="worker_phone_number_text_value">1234567899</string>
     <string name="worker_add_button_label">Add</string>
@@ -60,9 +62,9 @@
     <string name="edit_worker_position_text_label">Position</string>
     <string name="edit_worker_position_text_value">Leader of metrology department</string>
     <string name="edit_worker_shift_dependency_selector_label">Shift</string>
-    <string name="edit_worker_shift_dependency_selector_value">FirstClass</string>
+    <string name="edit_worker_shift_dependency_selector_value">Select shift</string>
     <string name="edit_worker_employment_dependency_selector_label">Department</string>
-    <string name="edit_worker_employment_dependency_selector_value">1</string>
+    <string name="edit_worker_employment_dependency_selector_value">Select department</string>
     <string name="edit_worker_phone_number_text_label">Phone number</string>
     <string name="edit_worker_phone_number_text_value">1234567899</string>
     <string name="edit_worker_save_button_label">Save</string>
@@ -95,8 +97,8 @@
     <string name="edit_one_employment_activity_label">Edit Department</string>
 
     <!--Toasts-->
-    <string name="toast_succesfull_add">Add was completed succesfully!</string>
-    <string name="toast_succesfull_save">Saved succesfully!</string>
+    <string name="toast_succesfull_add">Add was completed successfully!</string>
+    <string name="toast_succesfull_save">Saved successfully!</string>
     <string name="toast_empty_name_field">Please fill name field.</string>
     <string name="toast_empty_phone_field">Please fill phone field.</string>
     <string name="toast_empty_date_field">Please pick start date.</string>

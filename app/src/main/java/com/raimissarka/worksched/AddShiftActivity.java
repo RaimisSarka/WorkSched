@@ -4,9 +4,12 @@ import android.app.DatePickerDialog;
 import android.app.Dialog;
 
 import android.content.ContentValues;
+import android.content.Context;
 import android.content.DialogInterface;
+import android.content.SharedPreferences;
 import android.content.res.Resources;
 import android.database.sqlite.SQLiteDatabase;
+import android.preference.PreferenceManager;
 import android.support.annotation.NonNull;
 import android.support.v4.app.DialogFragment;
 import android.support.v7.app.ActionBar;
@@ -34,7 +37,7 @@ public class AddShiftActivity extends AppCompatActivity {
     private EditText mShiftName;
     private EditText mShiftNumber;
     private EditText mShiftStartDate;
-    private int mShiftType = 1;
+    private static int mShiftType = 1;
     private int mStartDate;
     private ShiftsDbHelper dbHelper;
 
@@ -80,9 +83,17 @@ public class AddShiftActivity extends AppCompatActivity {
         // Create a DB helper (this will create the DB if run for the first time)
         dbHelper = new ShiftsDbHelper(this);
 
+        mShiftName = (EditText) findViewById(R.id.et_shift_name_text);
+        mShiftNumber = (EditText) findViewById(R.id.et_shift_number_text_value);
+        mShiftStartDate = (EditText) findViewById(R.id.et_shift_start_date_selector_value);
+        TextView mShiftTypeText = (TextView) findViewById(R.id.tv_shift_type_text_value);
+
+        Resources res = getResources();
+        String[] mTypeValues = res.getStringArray(R.array.shift_types);
+        mShiftTypeText.setText(mTypeValues[0]);
+
+
         FrameLayout mAddShiftButton = (FrameLayout) findViewById(R.id.fl_shift_add_button);
-
-
 
         mAddShiftButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -110,20 +121,6 @@ public class AddShiftActivity extends AppCompatActivity {
                 }
             }
         });
-
-
-        mShiftName = (EditText) findViewById(R.id.et_shift_name_text);
-        mShiftNumber = (EditText) findViewById(R.id.et_shift_number_text_value);
-        mShiftStartDate = (EditText) findViewById(R.id.et_shift_start_date_selector_value);
-        TextView mShiftTypeText = (TextView) findViewById(R.id.tv_shift_type_text_value);
-
-        Resources res = getResources();
-        String[] mTypeValues = res.getStringArray(R.array.shift_types);
-        if (mShiftTypeText.getText().toString() == mTypeValues[0]){
-            mShiftType = 1;
-        } else{
-            mShiftType = 2;
-        }
     }
 
 
@@ -157,8 +154,12 @@ public class AddShiftActivity extends AppCompatActivity {
                 mShiftStartDate.getText().length() != 0) {
             addNewShift(mShiftName.getText().toString(),
                     mShiftNumber.getText().toString(),
-                    mShiftStartDate.getText().toString(),
-                    String.valueOf(mShiftType));
+                    mShiftStartDate.getText().toString());
+
+            SharedPreferences sharedPreferences = getSharedPreferences("mySettings", 0);
+            SharedPreferences.Editor editor = sharedPreferences.edit();
+            editor.putString(mShiftName.getText().toString(), mShiftStartDate.getText().toString());
+            editor.commit();
             return true;
         } else {
             return false;
@@ -167,11 +168,11 @@ public class AddShiftActivity extends AppCompatActivity {
 
 
 
-    public long addNewShift (String name, String number, String date, String shiftType) {
+    public long addNewShift (String name, String number, String date) {
         ContentValues cv = new ContentValues();
         cv.put(ShiftsContract.ShiftsEntry.COLUMN_SHIFT_NAME, name);
         cv.put(ShiftsContract.ShiftsEntry.COLUMN_SHIFT_NUMBER, number);
-        cv.put(ShiftsContract.ShiftsEntry.COLUMN_SHIFT_TYPE, shiftType);
+        cv.put(ShiftsContract.ShiftsEntry.COLUMN_SHIFT_TYPE, mShiftType);
         cv.put(ShiftsContract.ShiftsEntry.COLUMN_SHIFT_START_DATE, date);
         return mDb.insert(ShiftsContract.ShiftsEntry.TABLE_NAME, null, cv);
     }
@@ -215,19 +216,22 @@ public class AddShiftActivity extends AppCompatActivity {
         @Override
         public Dialog onCreateDialog(Bundle savedInstanceState) {
             AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+            Resources res = getResources();
+            final String[] mTypeValues = res.getStringArray(R.array.shift_types);
 
             builder.setTitle(R.string.dialog_pick_type_message)
                     .setItems(R.array.shift_types, new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
                             TextView mTypeText = (TextView) getActivity().findViewById(R.id.tv_shift_type_text_value);
+                            mTypeText.setText(mTypeValues[which]);
                             switch (which) {
                                 case 0:{
-                                    mTypeText.setText("1");
+                                    mShiftType = 1;
                                     break;
                                 }
                                 case 1:{
-                                    mTypeText.setText("2");
+                                    mShiftType = 2;
                                     break;
                                 }
                                 default:{

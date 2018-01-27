@@ -121,7 +121,7 @@ public class EditShiftsActivity extends AppCompatActivity {
 
         @Override
         protected void onPreExecute() {
-            ProgressBar mLoadingIndicator = (ProgressBar) findViewById(R.id.pb_shift_loading_indicator);
+            mLoadingIndicator = (ProgressBar) findViewById(R.id.pb_shift_loading_indicator);
             mExecuting = true;
             if (cursor == null){
                 mLoadingIndicator.setVisibility(View.VISIBLE);
@@ -155,7 +155,7 @@ public class EditShiftsActivity extends AppCompatActivity {
         @Override
         protected void onPostExecute(Void aVoid) {
             mExecuting = false;
-            ProgressBar mLoadingIndicator = (ProgressBar) findViewById(R.id.pb_shift_loading_indicator);
+            mLoadingIndicator = (ProgressBar) findViewById(R.id.pb_shift_loading_indicator);
             mLoadingIndicator.setVisibility(View.INVISIBLE);
 
             // Create an adapter for that cursor to display the data

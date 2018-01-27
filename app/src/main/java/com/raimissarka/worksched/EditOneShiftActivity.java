@@ -4,6 +4,8 @@ import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.content.ContentValues;
 import android.content.DialogInterface;
+import android.content.SharedPreferences;
+import android.content.res.Resources;
 import android.database.sqlite.SQLiteDatabase;
 import android.support.annotation.NonNull;
 import android.support.v4.app.DialogFragment;
@@ -34,6 +36,7 @@ public class EditOneShiftActivity extends AppCompatActivity {
     private EditText mShiftNameEditText;
     private EditText mShiftNumberEditText;
     private TextView mShiftTypeTextView;
+    private static int mShiftTypeInt = 1;
     private EditText mStartDateEditText;
     private long mShiftID;
 
@@ -78,8 +81,11 @@ public class EditOneShiftActivity extends AppCompatActivity {
 
         //get type
         String type = getIntent().getStringExtra("SHIFT_TYPE");
+        mShiftTypeInt = Integer.parseInt(type);
         mShiftTypeTextView = (TextView) findViewById(R.id.tv_edit_shift_type_text_value);
-        mShiftTypeTextView.setText(type);
+        Resources r = getResources();
+        String[] mTypeTexts = r.getStringArray(R.array.shift_types);
+        mShiftTypeTextView.setText(mTypeTexts[Integer.valueOf(type) - 1]);
 
         //get date
         String date  = getIntent().getStringExtra("SHIFT_START_DATE");
@@ -144,11 +150,11 @@ public class EditOneShiftActivity extends AppCompatActivity {
                     Toast.LENGTH_LONG).show();
             return false;
         }
-        if (mShiftTypeTextView.getText().length() == 0) {
+        /*if (mShiftTypeTextView.getText().length() == 0) {
             Toast.makeText(EditOneShiftActivity.this, R.string.toast_no_type,
                     Toast.LENGTH_LONG).show();
             return false;
-        }
+        }*/
         if (mStartDateEditText.getText().length() == 0) {
             Toast.makeText(EditOneShiftActivity.this, R.string.toast_empty_date_field,
                     Toast.LENGTH_LONG).show();
@@ -162,8 +168,12 @@ public class EditOneShiftActivity extends AppCompatActivity {
             updateShift(mShiftID,
                     mShiftNameEditText.getText().toString(),
                     mShiftNumberEditText.getText().toString(),
-                    mShiftTypeTextView.getText().toString(),
                     mStartDateEditText.getText().toString());
+
+            SharedPreferences sharedPreferences = getSharedPreferences("mySettings", 0);
+            SharedPreferences.Editor editor = sharedPreferences.edit();
+            editor.putString(mShiftNameEditText.getText().toString(), mStartDateEditText.getText().toString());
+            editor.commit();
 
             return true;
         } else {
@@ -173,11 +183,11 @@ public class EditOneShiftActivity extends AppCompatActivity {
 
 
 
-    public long updateShift(long id, String name, String number, String type, String date) {
+    public long updateShift(long id, String name, String number, String date) {
         ContentValues cv = new ContentValues();
         cv.put(ShiftsContract.ShiftsEntry.COLUMN_SHIFT_NAME, name);
         cv.put(ShiftsContract.ShiftsEntry.COLUMN_SHIFT_NUMBER, number);
-        cv.put(ShiftsContract.ShiftsEntry.COLUMN_SHIFT_TYPE, type);
+        cv.put(ShiftsContract.ShiftsEntry.COLUMN_SHIFT_TYPE, mShiftTypeInt);
         cv.put(ShiftsContract.ShiftsEntry.COLUMN_SHIFT_START_DATE, date);
         return mDb.update(ShiftsContract.ShiftsEntry.TABLE_NAME, cv,  "_id="+id, null);
     }
@@ -228,13 +238,16 @@ public class EditOneShiftActivity extends AppCompatActivity {
                        @Override
                        public void onClick(DialogInterface dialog, int which) {
                            TextView mTypeText = (TextView) getActivity().findViewById(R.id.tv_edit_shift_type_text_value);
+                           Resources r = getResources();
+                           String [] types = r.getStringArray(R.array.shift_types);
+                           mTypeText.setText(types[which]);
                            switch (which) {
                                case 0:{
-                                   mTypeText.setText("1");
+                                  mShiftTypeInt = 1;
                                    break;
                                }
                                case 1:{
-                                   mTypeText.setText("2");
+                                   mShiftTypeInt = 2;
                                    break;
                                }
                                default:{
