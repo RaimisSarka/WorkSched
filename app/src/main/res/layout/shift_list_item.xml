@@ -4,7 +4,6 @@
     android:layout_height="wrap_content"
     android:background="@drawable/layout_borders"
     android:layout_marginTop="5dp"
-    android:padding="5dp"
     android:orientation="horizontal">
 
     <TextView

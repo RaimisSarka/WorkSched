@@ -21,6 +21,7 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -45,15 +46,13 @@ public class MainActivity extends AppCompatActivity {
     public static String EMPLOYMENT_TO_SHOW_KEY = "employment_to_show";
     public static String EMPLOYMENT_TO_SHOW_ID_KEY = "employment_to_show_id";
 
-    private ScheduleAdapter mAdapter;
     private List<DayData> mDayData= new ArrayList<>();
     private SQLiteDatabase mDb;
-    private WorkersTable mWorkersTable;
-    private RecyclerView scheduleRecyclerView;
     private Cursor mWorkersCursor;
     private Cursor mShiftsCursor;
     private Cursor mEmploymentsCursor;
     private int mMainYear;
+    private int mMainDay;
     private int mEmploymentToShowInt;
 
     @Override
@@ -76,6 +75,7 @@ public class MainActivity extends AppCompatActivity {
         Date mTodayDate = calendarToday.getTime();
         int mDayOfWeekToday = calendarToday.get(Calendar.DAY_OF_WEEK);
         mMainYear = calendarToday.get(Calendar.YEAR);
+        mMainDay = calendarToday.get(Calendar.DAY_OF_YEAR);
         String[] mDayNamesArray = getResources().getStringArray(R.array.weekdays_name);
         SimpleDateFormat formatter = new SimpleDateFormat("yyyy/MM/dd");
         String mTodayDateString =  formatter.format(mTodayDate).toString();
@@ -84,7 +84,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void loadData (Context contex){
-        mWorkersTable = new WorkersTable(contex);
+        WorkersTable mWorkersTable = new WorkersTable(contex);
         mWorkersTable.execute(contex);
     }
 
@@ -265,7 +265,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void createYearList(int year){
         Calendar calendar = Calendar.getInstance();
-
+        Boolean weekEnd = false;
         calendar.set(Calendar.YEAR, year);
         int numOfDays = calendar.getActualMaximum(Calendar.DAY_OF_YEAR);
         int dayNo;
@@ -291,10 +291,16 @@ public class MainActivity extends AppCompatActivity {
                  dayOfWeek --;
              }
 
+             if (dayOfWeek == 6 || dayOfWeek == 7){
+                 weekEnd = true;
+             } else {
+                 weekEnd = false;
+             }
+
 
              DayData dataToAdd = new DayData(String.valueOf(month)+"/"+dayOfMonth+"",
                      mShiftNo,
-                     getWorkersName(mShiftNo));
+                     getWorkersName(mShiftNo), weekEnd);
              mDayData.add(dataToAdd);
          }
     }
@@ -388,15 +394,28 @@ public class MainActivity extends AppCompatActivity {
             mLoadingIndicator.setVisibility(View.INVISIBLE);
 
             // Create an adapter for that cursor to display the data
-            mAdapter = new ScheduleAdapter(mDayData);
+            ScheduleAdapter mAdapter = new ScheduleAdapter(mDayData);
 
-            scheduleRecyclerView = (RecyclerView) MainActivity.this.findViewById(R.id.rv_workers);
+            RecyclerView scheduleRecyclerView = (RecyclerView) MainActivity.this.findViewById(R.id.rv_workers);
 
             // Set layout for the RecyclerView, because it's a list we are using the linear layout
             scheduleRecyclerView.setLayoutManager(new LinearLayoutManager(mContext));
 
             // Link the adapter to the RecyclerView
             scheduleRecyclerView.setAdapter(mAdapter);
+
+            TextView mDateTextView = (TextView) findViewById(R.id.tvDate);
+            mDateTextView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    RecyclerView scheduleRecyclerView = (RecyclerView) MainActivity.this.findViewById(R.id.rv_workers);
+                    LinearLayoutManager mLayoutManager = (LinearLayoutManager) scheduleRecyclerView.getLayoutManager();
+                    mLayoutManager.scrollToPositionWithOffset(mMainDay - 1, 0);
+                }
+            });
+
+            LinearLayoutManager mLayoutManager = (LinearLayoutManager) scheduleRecyclerView.getLayoutManager();
+            mLayoutManager.scrollToPositionWithOffset(mMainDay - 1, 0);
 
         }
     }

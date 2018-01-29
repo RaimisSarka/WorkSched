@@ -1,5 +1,9 @@
 package com.raimissarka.worksched;
 
+import android.content.Context;
+import android.content.res.Resources;
+import android.graphics.Color;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -31,7 +35,16 @@ public class ScheduleAdapter extends RecyclerView.Adapter<ScheduleAdapter.Schedu
     @Override
     public void onBindViewHolder(ScheduleViewHolder holder, int position) {
 
+        int colorAccent = ContextCompat.getColor(holder.itemView.getContext(), R.color.colorAccent);
+        int colorText = ContextCompat.getColor(holder.itemView.getContext(), R.color.colorSimpleText);
+
         DayData mData = dayDataList.get(position);
+        if (mData.getWeekend()){
+            holder.mDateTextView.setTextColor(colorAccent);
+        } else {
+            holder.mDateTextView.setTextColor(colorText);
+        }
+
         holder.mDateTextView.setText(mData.getDate());
         holder.mShiftNoTextView.setText(mData.getShiftNo());
         holder.mWorkersNameTextView.setText(mData.getWorkerName());

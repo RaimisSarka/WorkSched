@@ -9,6 +9,7 @@ public class DayData {
     private String date;
     private String shiftNo;
     private String workerName;
+    private Boolean weekend;
 
     public DayData(){
 
@@ -16,10 +17,11 @@ public class DayData {
 
 
 
-    public DayData(String date, String shiftNo, String workerName) {
+    public DayData(String date, String shiftNo, String workerName, Boolean weekend) {
         this.date = date;
         this.shiftNo = shiftNo;
         this.workerName = workerName;
+        this.weekend = weekend;
     }
 
 
@@ -46,4 +48,9 @@ public class DayData {
     public void setWorkerName(String workerName) {
         this.workerName = workerName;
     }
+
+    public Boolean getWeekend() {
+        return weekend;
+    }
+
 }
