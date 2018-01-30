@@ -306,6 +306,7 @@ public class EditOneWorkerActivity extends AppCompatActivity {
                 //Set text representation of Shift number
                 if (mShiftsNumbers.get(i) == mShiftNumberForCompare){
                     mWorkersShiftDependency.setText(mShiftsNames.get(i));
+                    mWorkersShiftDependencyInt = Integer.valueOf(mShiftsNumbers.get(i));
                 }
                 i++;
             }
@@ -380,6 +381,7 @@ public class EditOneWorkerActivity extends AppCompatActivity {
                 //Set text representation of Employment _ID
                 if (mEmployment_IDs.get(i) == m_IdForcompare) {
                     mWorkersEmploymentDependency.setText(mEmploymentNames.get(i));
+                    mWorkersEmploymentDependencyInt = Integer.valueOf(mEmployment_IDs.get(i));
                 }
                 i++;
             }
