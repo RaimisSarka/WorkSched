@@ -21,16 +21,28 @@ import java.util.List;
 public class ScheduleAdapter extends RecyclerView.Adapter<ScheduleAdapter.ScheduleViewHolder> {
 
     private List<DayData> dayDataList;
+    private static final int VIEW_TYPE_TODAY = 0;
+    private static final int VIEW_TYPE_OTHER_DAY = 1;
 
     public ScheduleAdapter(List<DayData> dayDataList) {
         this.dayDataList = dayDataList;
     }
 
+
+
     @Override
     public ScheduleViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View mItemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.schedule_list_item, parent, false);
-        return new ScheduleViewHolder(mItemView);
+
+        if (viewType == VIEW_TYPE_OTHER_DAY) {
+            View mItemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.schedule_list_item, parent, false);
+            return new ScheduleViewHolder(mItemView);
+        } else {
+            View mItemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.schedule_today_list_item, parent, false);
+            return new ScheduleViewHolder(mItemView);
+        }
     }
+
+
 
     @Override
     public void onBindViewHolder(ScheduleViewHolder holder, int position) {
@@ -51,7 +63,15 @@ public class ScheduleAdapter extends RecyclerView.Adapter<ScheduleAdapter.Schedu
     }
 
 
-
+    @Override
+    public int getItemViewType(int position) {
+        DayData mData = dayDataList.get(position);
+        if (mData.getToday()){
+            return VIEW_TYPE_TODAY;
+        } else {
+            return VIEW_TYPE_OTHER_DAY;
+        }
+    }
 
     @Override
     public int getItemCount() {

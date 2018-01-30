@@ -266,6 +266,7 @@ public class MainActivity extends AppCompatActivity {
     public void createYearList(int year){
         Calendar calendar = Calendar.getInstance();
         Boolean weekEnd = false;
+        Boolean today = false;
         calendar.set(Calendar.YEAR, year);
         int numOfDays = calendar.getActualMaximum(Calendar.DAY_OF_YEAR);
         int dayNo;
@@ -297,10 +298,16 @@ public class MainActivity extends AppCompatActivity {
                  weekEnd = false;
              }
 
+             if (calendar.get(Calendar.DAY_OF_YEAR) == mMainDay) {
+                 today = true;
+             } else {
+                 today = false;
+             }
+
 
              DayData dataToAdd = new DayData(String.valueOf(month)+"/"+dayOfMonth+"",
                      mShiftNo,
-                     getWorkersName(mShiftNo), weekEnd);
+                     getWorkersName(mShiftNo), weekEnd, today);
              mDayData.add(dataToAdd);
          }
     }

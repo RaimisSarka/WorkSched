@@ -10,18 +10,23 @@ public class DayData {
     private String shiftNo;
     private String workerName;
     private Boolean weekend;
+    private Boolean today;
 
     public DayData(){
 
     }
 
 
+    public Boolean getToday() {
+        return today;
+    }
 
-    public DayData(String date, String shiftNo, String workerName, Boolean weekend) {
+    public DayData(String date, String shiftNo, String workerName, Boolean weekend, Boolean today) {
         this.date = date;
         this.shiftNo = shiftNo;
         this.workerName = workerName;
         this.weekend = weekend;
+        this.today = today;
     }
 
 
