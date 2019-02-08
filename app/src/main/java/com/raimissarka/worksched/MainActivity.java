@@ -65,7 +65,7 @@ public class MainActivity extends AppCompatActivity {
 
         setToday();
         setupSharedPrefereces();
-        loadData(this);
+        //loadData(this);
     }
 
     public void setToday(){
